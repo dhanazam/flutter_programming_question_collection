@@ -1,0 +1,50 @@
+{
+    "home": {
+        "categories": "Categories",
+        "home": "Home",
+        "library": "Library",
+        "bookmarks": "Bookmarks",
+        "questions": "Questions",
+        "books": "Books",
+        "previous": "previous",
+        "next": "next"
+    },
+    "library": {
+        "all": "All",
+        "allBooks": "All books",
+        "discoverMore": "Discover more from {category}",
+        "page": "Page"
+    },
+    "drawer": {
+        "rateUs": "Rate us",
+        "share": "Share",
+        "settings": "Settings",
+        "contactUs": "Contact us"
+    },
+    "settings": {
+        "settings": "Settings",
+        "language": "Language",
+        "notifications": "Notifications",
+        "clearCache": "Clear cache",
+        "clearCacheWarning": "All questions and books that have been stored in cache will be deleted."
+    },
+    "contactUs": {
+        "contactUs": "Contact us",
+        "yourEmail": "Your email",
+        "writeFeedback": "Write your feedback here...",
+        "sendFeedback": "Send feedback",
+        "emailRequired": "Email field is required.",
+        "feedbackRequired": "Feedback field is required.",
+        "invalidEmailFormat": "Invalid email format.",
+        "thankforfeedback": "Thank you for your feedback 🥳"
+    },
+    "introduction": {
+        "firstPage": "\"Interview Helper\" is a dynamic app for tech job seekers and professionals, covering 19 key areas like Flutter&Dart, Go, C++, C#, Cybersecurity, and more. It offers extensive resources such as books, tutorials, and interactive exercises in each category, aimed at deepening your grasp of these technologies.",
+        "secondPage": "This app covers various technologies and programming languages, providing interview questions for junior to senior levels. It`s a thorough guide for interview prep, boosting your tech skills and readiness for job interviews."
+    },
+    "connectionProblem": "A problem has occurred with the internet!",
+    "yes": "Yes",
+    "no": "No",
+    "done": "Done",
+    "submit": "Submit"
+}
