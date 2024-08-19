@@ -1,5 +1,5 @@
-class AppRouterConstant {
-  AppRouterConstant._();
+class AppRouteConstant {
+  AppRouteConstant._();
   static const String initial = '/';
   static const String onboarding = '/onboarding';
 
