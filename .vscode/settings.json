@@ -1,0 +1,20 @@
+{
+    "dart.flutterSdkPath": "/home/dhan/Development/flutter",
+    "git.suggestSmartCommit": false,
+    "git.confirmSync": false,
+    "[dart]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.rulers": [
+            80
+        ],
+        "editor.selectionHighlight": false,
+        "editor.suggestSelection": "first",
+        "editor.tabCompletion": "onlySnippets",
+        "editor.wordBasedSuggestions": "off",
+        "editor.defaultFormatter": "Dart-Code.dart-code"
+    },
+    "dart.lineLength": 80, // Move this outside the [dart] block
+    "dart.flutterCustomEmulators": [],
+    "dart.flutterCreateOrganization": null
+}
