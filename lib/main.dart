@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 
+import 'src/config/router/router_config.dart';
+
 void main() {
-  runApp(const MainApp());
+  runApp(const ProgrammingQuestionCollection());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class ProgrammingQuestionCollection extends StatelessWidget {
+  const ProgrammingQuestionCollection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return MaterialApp.router(
+      routerConfig: AppRouterConfig.init.config,
     );
   }
 }
