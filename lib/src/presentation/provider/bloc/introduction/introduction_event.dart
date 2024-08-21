@@ -1,6 +1,6 @@
 part of 'introduction_bloc.dart';
 
-enum AppEvents { startSet, startGet}
+enum AppEvents { startSet, startGet }
 
 class AppEvent {
   AppEvents? type;

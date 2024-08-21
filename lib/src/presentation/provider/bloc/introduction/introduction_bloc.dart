@@ -1,13 +1,23 @@
+// ignore_for_file: invalid_use_of_visible_for_testing_member
+
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_programming_question_collection/src/data/datasources/local/application_prefs.dart';
+
 part 'introduction_event.dart';
 part 'introduction_state.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
-  AppBloc() : prefsImpl = AppIntroductionPrefsImpl(),
+  AppBloc()
+      : prefsImpl = AppIntroductionPrefsImpl(),
         super(AppState.unknown()) {
     on<AppEvent>((event, emit) {
       switch (event.type) {
         case AppEvents.startSet:
-
+          _setState(event);
+          break;
+        case AppEvents.startGet:
+          _getState();
+        default:
       }
     });
   }
@@ -15,7 +25,8 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   void _getState() async {
     emit(state.copyWith(loading: true));
     final isOnboardingViewed = await prefsImpl.getIntroducedState();
-    emit(state.copyWith(isOnboardingViewed: isOnboardingViewed, loading: false));
+    emit(
+        state.copyWith(isOnboardingViewed: isOnboardingViewed, loading: false));
   }
 
   void _setState(AppEvent event) async {
@@ -23,7 +34,8 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     await prefsImpl.setIntroducedState(event.payload);
 
     final isOnboardingViewed = await prefsImpl.getIntroducedState();
-    emit(state.copyWith(isOnboardingViewed: isOnboardingViewed, loading: false));
+    emit(
+        state.copyWith(isOnboardingViewed: isOnboardingViewed, loading: false));
   }
 
   late AppIntroductionPrefsImpl prefsImpl;
