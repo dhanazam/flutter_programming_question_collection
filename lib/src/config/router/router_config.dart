@@ -63,6 +63,7 @@ class AppRouterConfig {
         ],
       )
     ],
+    debugLogDiagnostics: true,
     navigatorKey: _rootNavigatorKey,
     initialLocation: AppRouteConstant.onboarding,
   );

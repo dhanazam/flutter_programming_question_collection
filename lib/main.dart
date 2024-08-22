@@ -7,9 +7,11 @@ import 'src/config/router/router_config.dart';
 import 'src/presentation/provider/bloc/introduction/introduction_bloc.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await EasyLocalization.ensureInitialized();
 
+  FlutterNativeSplash.remove();
   runApp(
     EasyLocalization(
       supportedLocales: const [
@@ -40,6 +42,8 @@ class ProgrammingQuestionCollection extends StatelessWidget {
           if (state.loading) return const SizedBox.shrink();
           return MaterialApp.router(
             title: "Programming Question Collection",
+            restorationScopeId: 'interview_helper',
+            debugShowCheckedModeBanner: false,
             routerConfig: AppRouterConfig.init.config,
             locale: !state.isOnboardingViewed!
                 ? View.of(context).platformDispatcher.locale
