@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class LibraryScreen extends StatelessWidget {
-  const LibraryScreen({Key? key}) : super(key: key);
+  const LibraryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Library'),
+        title: const Text('Library'),
       ),
-      body: Center(
+      body: const Center(
         child: Text('Library Screen'),
       ),
     );

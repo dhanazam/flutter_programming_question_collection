@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'src/presentation/screens/drawer_screen/index.dart';
 
 class AppScaffold extends StatefulWidget {
   const AppScaffold({super.key, required this.body});
@@ -20,6 +22,9 @@ class _AppScaffoldState extends State<AppScaffold> {
     return Scaffold(
       appBar: appBar(widget.body.currentIndex),
       body: widget.body,
+      drawer: widget.body.currentIndex.isEqual(0)
+          ? DrawerView(key: ValueKey(context.locale.languageCode))
+          : null,
       bottomNavigationBar: _BottomNavBar(
           changeScreen: goBranch, screenIndex: widget.body.currentIndex),
     );
@@ -44,6 +49,8 @@ class _BottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       items: _buildItems,
+      onTap: changeScreen,
+      currentIndex: screenIndex,
     );
   }
 
