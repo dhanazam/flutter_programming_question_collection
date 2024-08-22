@@ -18,6 +18,12 @@ dependencies:
   permission_handler: ^11.3.1
   simple_app_cache_manager: ^0.0.4
   version_tracker: ^2.4.1
+  google_fonts: ^6.1.0
+  rating_dialog: ^2.0.4
+  easy_localization: ^3.0.5
+  store_redirect: ^2.0.2
+  share_plus: ^10.0.2
+  flutter_native_splash: ^2.4.1
 
 dev_dependencies:
   flutter_test:
@@ -30,4 +36,11 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/app.png
+    - assets/app-original.png
     - assets/introduction/
+
+  fonts:
+    - family: Ubuntu-Regular
+      fonts:
+        - asset: assets/fonts/Ubuntu-Regular.ttf
