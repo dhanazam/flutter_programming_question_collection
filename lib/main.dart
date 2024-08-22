@@ -8,8 +8,6 @@ import 'src/presentation/provider/bloc/introduction/introduction_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // WidgetsBinding widgetsBinding =
-  // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await EasyLocalization.ensureInitialized();
 
   runApp(
@@ -46,6 +44,8 @@ class ProgrammingQuestionCollection extends StatelessWidget {
             locale: !state.isOnboardingViewed!
                 ? View.of(context).platformDispatcher.locale
                 : context.locale,
+            supportedLocales: context.supportedLocales,
+            localizationsDelegates: context.localizationDelegates,
           );
         },
       ),

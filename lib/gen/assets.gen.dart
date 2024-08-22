@@ -22,6 +22,22 @@ class $AssetsIntroductionGen {
   List<String> get values => [books, questions];
 }
 
+class $AssetsTranslationsGen {
+  const $AssetsTranslationsGen();
+
+  /// File path: assets/translations/en.json
+  String get en => 'assets/translations/en.json';
+
+  /// File path: assets/translations/ru.json
+  String get ru => 'assets/translations/ru.json';
+
+  /// File path: assets/translations/tr.json
+  String get tr => 'assets/translations/tr.json';
+
+  /// List of all assets
+  List<String> get values => [en, ru, tr];
+}
+
 class Assets {
   Assets._();
 
@@ -29,6 +45,7 @@ class Assets {
       AssetGenImage('assets/app-original.png');
   static const AssetGenImage app = AssetGenImage('assets/app.png');
   static const $AssetsIntroductionGen introduction = $AssetsIntroductionGen();
+  static const $AssetsTranslationsGen translations = $AssetsTranslationsGen();
 
   /// List of all assets
   static List<AssetGenImage> get values => [appOriginal, app];
