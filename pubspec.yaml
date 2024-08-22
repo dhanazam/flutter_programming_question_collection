@@ -24,6 +24,7 @@ dependencies:
   store_redirect: ^2.0.2
   share_plus: ^10.0.2
   flutter_native_splash: ^2.4.1
+  flutter_spinkit: ^5.2.1
 
 dev_dependencies:
   flutter_test:
@@ -31,6 +32,23 @@ dev_dependencies:
   flutter_lints: ^4.0.0
   flutter_gen_runner: ^5.3.0
   build_runner: ^2.3.3
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  image_path_android: "assets/app-original.png"
+  adaptive_icon_foreground: "assets/app-original.png"
+  adaptive_icon_background: "#1398C3"
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: assets/app.png
+
+  android_12:
+    image: assets/app.png
+    icon_background_color: "#ffffff"
+    image_dark: assets/app.png
+    icon_background_color_dark: "#121212"
 
 flutter:
   uses-material-design: true
