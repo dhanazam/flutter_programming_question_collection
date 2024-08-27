@@ -13,11 +13,16 @@ class HiveConfig {
     await Hive.initFlutter(dir.path);
 
     _registerAdapters();
+    await _openBoxes();
   }
 
   void _registerAdapters() {
     if (!Hive.isAdapterRegistered(3)) {
       Hive.registerAdapter(QuestionAdapter());
     }
+  }
+
+  Future<void> _openBoxes() async {
+    await Hive.openBox('questions');
   }
 }
