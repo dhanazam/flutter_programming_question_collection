@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_programming_question_collection/src/domain/models/index.dart';
+import 'package:flutter_programming_question_collection/src/presentation/screens/home_screen/index.dart';
 import 'package:flutter_programming_question_collection/src/presentation/screens/library_screen/library_screen.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../app_scaffold.dart';
-import '../../presentation/screens/home_screen/home_screen.dart';
 import '../../presentation/screens/introduction_screen.dart';
 import '../../utils/constants/route_names.dart';
 
@@ -43,6 +44,24 @@ class AppRouterConfig {
                   return NoTransitionPage(
                       child: HomeScreen(key: state.pageKey));
                 },
+                routes: [
+                  GoRoute(
+                    parentNavigatorKey: _rootNavigatorKey,
+                    path: AppRouteConstant.questionsView,
+                    name: AppRouteConstant.questionsView,
+                    pageBuilder: (BuildContext context, GoRouterState state) {
+                      final questions = (state.extra as List).cast<Question>();
+                      final category = state.uri.queryParameters['category']!;
+                      return MaterialPage(
+                        child: QuestionScreen(
+                          key: state.pageKey,
+                          questions: questions,
+                          category: category,
+                        ),
+                      );
+                    },
+                  ),
+                ],
               )
             ],
           ),

@@ -5,6 +5,8 @@ import 'package:flutter_programming_question_collection/src/presentation/provide
 import 'package:flutter_programming_question_collection/src/utils/constants/categories.dart';
 import 'package:flutter_programming_question_collection/src/utils/constants/category_titles.dart';
 import 'package:flutter_programming_question_collection/src/utils/constants/interview_categories.dart';
+import 'package:flutter_programming_question_collection/src/utils/constants/route_names.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -40,7 +42,13 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return BlocListener<QuestionBloc, QuestionState>(
       listener: (context, state) {
-        if (!state.loading!) {}
+        if (!state.loading!) {
+          context.goNamed(
+            AppRouteConstant.questionsView,
+            queryParameters: {"category": category},
+            extra: state.questions,
+          );
+        }
       },
       child: Padding(
         padding: const EdgeInsets.only(top: 20),
@@ -49,7 +57,15 @@ class _HomeScreenState extends State<HomeScreen> {
             final card =
                 CategoryCards.cards(CategoryTitles.homeCategory[index]);
             return GestureDetector(
-              onTap: () async {},
+              onTap: () async {
+                _bloc.add(
+                  QuestionEvent.fetchQuestionStart(
+                    InterviewCategories.categories.toList()[index],
+                    context.locale.languageCode,
+                  ),
+                );
+                setState(() => category = card!.category);
+              },
               child: card,
             );
           },
