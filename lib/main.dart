@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_programming_question_collection/src/config/hive/hive_config.dart';
+import 'package:flutter_programming_question_collection/src/presentation/provider/bloc/feedback/feedback_cubit.dart';
 
 import 'src/config/router/router_config.dart';
 import 'src/presentation/provider/bloc/introduction/introduction_bloc.dart';
@@ -38,11 +39,9 @@ class ProgrammingQuestionCollection extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<AppBloc>(
-          create: (context) => AppBloc()..add(AppEvent.get()),
-        ),
-        BlocProvider<QuestionBloc>(
-          create: (context) => QuestionBloc(),
-        )
+            create: (context) => AppBloc()..add(AppEvent.get())),
+        BlocProvider<QuestionBloc>(create: (context) => QuestionBloc()),
+        BlocProvider(create: (context) => FeedbackCubit()),
       ],
       child: BlocBuilder<AppBloc, AppState>(
         builder: (context, state) {

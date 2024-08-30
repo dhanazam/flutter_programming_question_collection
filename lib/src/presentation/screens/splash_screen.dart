@@ -8,7 +8,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: Color(0xFFFFFFFF),
-      body: Center(child: KSpinKitCirlce()),
+      body: Center(child: KSpinKitCircle()),
     );
   }
 }
