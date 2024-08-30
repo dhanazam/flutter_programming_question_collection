@@ -42,7 +42,8 @@ class AppRouterConfig {
                 name: AppRouteConstant.homeView,
                 pageBuilder: (BuildContext context, GoRouterState state) {
                   return NoTransitionPage(
-                      child: HomeScreen(key: state.pageKey));
+                    child: HomeScreen(key: state.pageKey),
+                  );
                 },
                 routes: [
                   GoRoute(
