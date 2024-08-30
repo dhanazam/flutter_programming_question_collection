@@ -1,9 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_programming_question_collection/src/config/hive/hive_config.dart';
 import 'package:flutter_programming_question_collection/src/presentation/provider/bloc/feedback/feedback_cubit.dart';
+import 'package:flutter_programming_question_collection/src/utils/view_utils.dart';
 
 import 'src/config/router/router_config.dart';
 import 'src/presentation/provider/bloc/introduction/introduction_bloc.dart';
@@ -13,6 +15,8 @@ void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await EasyLocalization.ensureInitialized();
+
+  await dotenv.load(fileName: ".env");
 
   await HiveConfig.config.init();
 
@@ -51,6 +55,7 @@ class ProgrammingQuestionCollection extends StatelessWidget {
             restorationScopeId: 'interview_helper',
             debugShowCheckedModeBanner: false,
             routerConfig: AppRouterConfig.init.config,
+            scaffoldMessengerKey: ViewUtils.scaffoldMessengerKey,
             locale: !state.isOnboardingViewed!
                 ? View.of(context).platformDispatcher.locale
                 : context.locale,

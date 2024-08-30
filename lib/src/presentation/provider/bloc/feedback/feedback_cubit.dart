@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -6,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_programming_question_collection/src/config/network/connectivity_config.dart';
 import 'package:flutter_programming_question_collection/src/data/datasources/local/base/api_config.dart';
 import 'package:flutter_programming_question_collection/src/domain/models/index.dart';
-import 'package:http/http.dart' as http;
+import 'package:emailjs/emailjs.dart' as emailjs;
 
 part 'feedback_state.dart';
 
@@ -16,7 +15,10 @@ class FeedbackCubit extends Cubit<FeedbackState> {
         super(FeedbackState.unknown());
 
   void send({required Message message}) async {
-    final emailJS = EmailJS(message: message);
+    final templateParams = Message(
+      email: message.message,
+      message: message.message,
+    );
 
     final hasConnection =
         await _connectivityService.hasActiveInternetConnection();
@@ -25,12 +27,17 @@ class FeedbackCubit extends Cubit<FeedbackState> {
     try {
       emit(state.copyWith(loading: true));
 
-      final response = await http.post(
-        ApiConfig().api,
-        headers: ApiConfig().headers,
-        body: json.encode(emailJS.toJson()),
+      final response = await emailjs.send(
+        EmailJS.serviceId,
+        EmailJS.templateId,
+        templateParams.toJson(),
+        emailjs.Options(
+          publicKey: ApiConfig().api.toString(),
+          privateKey: 't2VnI9oXLNvuYOgc6rrwR',
+        ),
       );
-      if (response.statusCode == 200) {
+      debugPrint(response.toString());
+      if (response.status == 200) {
         emit(state.copyWith(
           loading: false,
           event: FeedbackEvents.success,
@@ -40,7 +47,7 @@ class FeedbackCubit extends Cubit<FeedbackState> {
       emit(state.copyWith(
         loading: false,
         event: FeedbackEvents.failure,
-        exception: ExceptionModel(description: "${response.reasonPhrase}"),
+        exception: ExceptionModel(description: "error"),
       ));
     } on SocketException catch (exception) {
       emit(state.copyWith(

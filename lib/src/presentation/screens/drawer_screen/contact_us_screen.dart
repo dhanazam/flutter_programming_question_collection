@@ -36,17 +36,13 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'contactUs.contactUs'.tr(),
-          style: ViewUtils.ubuntuStyle(fontSize: 19),
-        ),
-        centerTitle: false,
-      ),
+          title: Text(
+            'contactUs.contactUs'.tr(),
+            style: ViewUtils.ubuntuStyle(fontSize: 19),
+          ),
+          centerTitle: false),
       body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 15,
-          vertical: 20,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
         child: Form(
           key: formKey,
           child: Column(
@@ -78,7 +74,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                 textInputAction: TextInputAction.done,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-                  hintText: 'contactUs.writeFeedBack'.tr(),
+                  hintText: 'contactUs.writeFeedback'.tr(),
                   hintStyle: ViewUtils.ubuntuStyle(fontSize: 15),
                   border: const OutlineInputBorder(),
                   focusedBorder: const OutlineInputBorder(
@@ -95,7 +91,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                   message: message,
                   formKey: formKey,
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -127,6 +123,12 @@ class _FeedbackButtonState extends State<_FeedbackButton> {
     _subscription = Connectivity().onConnectivityChanged.listen((event) {
       _checkConnectivityStatus(event);
     });
+  }
+
+  @override
+  void dispose() {
+    _subscription.cancel();
+    super.dispose();
   }
 
   void _checkConnectivityStatus(ConnectivityResult event) {
@@ -162,12 +164,13 @@ class _FeedbackButtonState extends State<_FeedbackButton> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 50,
-      width: MediaQuery.sizeOf(context).width * 0.9,
+      width: MediaQuery.sizeOf(context).width * .9,
       child: OutlinedButton(
         onPressed: () => _sendFeedback(),
         style: ButtonStyle(
-          overlayColor: WidgetStateProperty.all(Colors.white),
-          foregroundColor: WidgetStateProperty.all(Colors.black),
+          overlayColor: MaterialStateProperty.all(Colors.white),
+          foregroundColor: MaterialStateProperty.all(Colors.black),
+          // side: MaterialStateProperty.all(const BorderSide(color: AppColors.primary, strokeAlign: 10)),
         ),
         child: BlocConsumer<FeedbackCubit, FeedbackState>(
           listener: (context, state) {

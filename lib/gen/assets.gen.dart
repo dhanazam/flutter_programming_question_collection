@@ -477,6 +477,7 @@ class $AssetsQuestionsTrGen {
 class Assets {
   Assets._();
 
+  static const String aEnv = '.env';
   static const AssetGenImage appOriginal =
       AssetGenImage('assets/app-original.png');
   static const AssetGenImage app = AssetGenImage('assets/app.png');
@@ -486,7 +487,7 @@ class Assets {
   static const $AssetsTranslationsGen translations = $AssetsTranslationsGen();
 
   /// List of all assets
-  static List<AssetGenImage> get values => [appOriginal, app];
+  static List<dynamic> get values => [aEnv, appOriginal, app];
 }
 
 class AssetGenImage {
