@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_programming_question_collection/app_scaffold.dart';
 import 'package:flutter_programming_question_collection/src/domain/models/index.dart';
+import 'package:flutter_programming_question_collection/src/utils/constants/route_names.dart';
 import 'package:flutter_programming_question_collection/src/utils/view_utils.dart';
+import 'package:go_router/go_router.dart';
 
 class QuestionCard extends StatelessWidget {
   const QuestionCard({
@@ -24,7 +27,16 @@ class QuestionCard extends StatelessWidget {
       decoration: ViewUtils.questionCardDecor(),
       margin: const EdgeInsets.all(7),
       child: ListTile(
-        onTap: () {},
+        onTap: () {
+          context.goNamed(
+            AppRouteConstant.questionView,
+            queryParameters: {
+              'index': index.toString(),
+              "category": category,
+            },
+            extra: questions,
+          );
+        },
         title: Text(
           '${index + 1}. ${questions[index].question}',
           maxLines: 1,

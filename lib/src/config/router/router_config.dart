@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_programming_question_collection/src/domain/models/index.dart';
 import 'package:flutter_programming_question_collection/src/presentation/screens/home_screen/index.dart';
+import 'package:flutter_programming_question_collection/src/presentation/screens/home_screen/question_screen.dart';
 import 'package:flutter_programming_question_collection/src/presentation/screens/library_screen/library_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -61,6 +62,30 @@ class AppRouterConfig {
                         ),
                       );
                     },
+                    routes: [
+                      GoRoute(
+                        parentNavigatorKey: _rootNavigatorKey,
+                        path: AppRouteConstant.questionView,
+                        name: AppRouteConstant.questionView,
+                        pageBuilder:
+                            (BuildContext context, GoRouterState state) {
+                          final questions =
+                              (state.extra as List).cast<Question>();
+                          final index =
+                              int.parse(state.uri.queryParameters['index']!);
+                          final category =
+                              state.uri.queryParameters['category']!;
+                          return MaterialPage(
+                            child: QuestionScreen(
+                              key: state.pageKey,
+                              questions: questions,
+                              category: category,
+                              index: index,
+                            ),
+                          );
+                        },
+                      )
+                    ],
                   ),
                 ],
               )
