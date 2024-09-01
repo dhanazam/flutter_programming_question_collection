@@ -65,6 +65,7 @@ flutter:
   assets:
     - assets/app.png
     - assets/app-original.png
+    - assets/svg/
     - assets/introduction/
     - assets/translations/
     - assets/questions/en/
