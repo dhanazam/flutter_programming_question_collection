@@ -54,7 +54,7 @@ class AppRouterConfig {
                       final questions = (state.extra as List).cast<Question>();
                       final category = state.uri.queryParameters['category']!;
                       return MaterialPage(
-                        child: QuestionScreen(
+                        child: QuestionsScreen(
                           key: state.pageKey,
                           questions: questions,
                           category: category,

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_programming_question_collection/src/domain/models/index.dart';
 import 'package:flutter_programming_question_collection/src/presentation/widgets/index.dart';
 
-class QuestionScreen extends StatefulWidget {
-  const QuestionScreen({
+class QuestionsScreen extends StatefulWidget {
+  const QuestionsScreen({
     super.key,
     required this.questions,
     required this.category,
@@ -13,10 +13,10 @@ class QuestionScreen extends StatefulWidget {
   final String category;
 
   @override
-  State<StatefulWidget> createState() => _QuestionScreenState();
+  State<StatefulWidget> createState() => _QuestionsScreenState();
 }
 
-class _QuestionScreenState extends State<QuestionScreen>
+class _QuestionsScreenState extends State<QuestionsScreen>
     with QuestionCardMixin {
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class _QuestionScreenState extends State<QuestionScreen>
   }
 }
 
-mixin QuestionCardMixin on State<QuestionScreen> {
+mixin QuestionCardMixin on State<QuestionsScreen> {
   final searchBarController = TextEditingController();
 
   late List<Question> searchedList;
