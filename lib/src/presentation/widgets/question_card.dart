@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_programming_question_collection/app_scaffold.dart';
 import 'package:flutter_programming_question_collection/src/domain/models/index.dart';
 import 'package:flutter_programming_question_collection/src/utils/constants/route_names.dart';
 import 'package:flutter_programming_question_collection/src/utils/view_utils.dart';
@@ -57,6 +56,7 @@ class QuestionCard extends StatelessWidget {
             ),
           ),
         ),
+        isThreeLine: true,
       ),
     );
   }

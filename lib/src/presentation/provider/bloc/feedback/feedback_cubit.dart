@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_programming_question_collection/src/config/network/connectivity_config.dart';
-import 'package:flutter_programming_question_collection/src/data/datasources/local/base/api_config.dart';
+import 'package:flutter_programming_question_collection/src/data/datasources/base/api_config.dart';
 import 'package:flutter_programming_question_collection/src/domain/models/index.dart';
 import 'package:emailjs/emailjs.dart' as emailjs;
 
