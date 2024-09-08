@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_programming_question_collection/gen/assets.gen.dart';
 import 'package:flutter_programming_question_collection/src/domain/models/index.dart';
 import 'package:flutter_programming_question_collection/src/presentation/provider/bloc/category/category_bloc.dart';
+import 'package:flutter_programming_question_collection/src/presentation/widgets/index.dart';
 import 'package:flutter_programming_question_collection/src/utils/index.dart';
 import 'package:flutter_programming_question_collection/src/utils/view_utils.dart';
 import 'package:flutter_svg/svg.dart';
@@ -68,11 +69,16 @@ class _QuestionViewState extends State<QuestionScreen> with _QuestionViewMixin {
                   },
                   icon: SvgPicture.asset(
                     Assets.svg.bookmark,
-                    color: Colors.white,
+                    color: isSaved ? Colors.orange.shade900 : Colors.white,
                     height: 19,
                   ),
                 ),
               ],
+              pinned: true,
+              backgroundColor: appBarColor,
+              expandedHeight: MediaQuery.sizeOf(context).height * .5,
+              flexibleSpace: _QuestionView(
+                  questions: questions, currentIndex: currentIndex),
             ),
             SliverToBoxAdapter(
               child: _AnswerView(question: questions[currentIndex]),
@@ -133,6 +139,41 @@ class _ChangeButton extends StatelessWidget {
           style: style,
         ),
       );
+}
+
+class _QuestionView extends StatelessWidget {
+  const _QuestionView({
+    required this.questions,
+    required this.currentIndex,
+  });
+
+  final List<Question> questions;
+  final int currentIndex;
+
+  @override
+  Widget build(BuildContext context) {
+    return FlexibleSpaceBar(
+      background: ClipPath(
+        clipper: MyClipper(),
+        child: ColoredBox(
+          color: AppColors.primary,
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Center(
+              child: Text(
+                questions[currentIndex].question,
+                textAlign: TextAlign.center,
+                style: ViewUtils.ubuntuStyle(
+                  color: Colors.white,
+                  fontSize: 21,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 class _AnswerView extends StatelessWidget {
