@@ -1,6 +1,8 @@
 import 'package:flutter_programming_question_collection/src/domain/models/index.dart';
 import 'package:hive/hive.dart';
 
+part 'question_category.g.dart';
+
 @HiveType(typeId: 2)
 class QuestionCategory {
   @HiveField(0)

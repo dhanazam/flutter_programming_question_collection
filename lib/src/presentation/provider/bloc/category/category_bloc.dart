@@ -1,4 +1,5 @@
 // ignore_for_file: invalid_use_of_visible_for_testing_member
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_programming_question_collection/src/data/datasources/local/base/base_cache_service.dart';
 import 'package:flutter_programming_question_collection/src/data/datasources/local/bookmarked_books_source_data.dart';
@@ -30,6 +31,7 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
   }
 
   void _onBookmarkQuestionInitial(CategoryEvent event) async {
+    debugPrint('Bookmarking question');
     var category =
         CacheService().bookmarkedQuestionsCategories.get(event.payload);
 
