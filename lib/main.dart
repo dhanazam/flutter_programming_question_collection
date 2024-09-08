@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_programming_question_collection/src/config/hive/hive_config.dart';
+import 'package:flutter_programming_question_collection/src/presentation/provider/bloc/category/category_bloc.dart';
 import 'package:flutter_programming_question_collection/src/presentation/provider/bloc/feedback/feedback_cubit.dart';
 import 'package:flutter_programming_question_collection/src/utils/view_utils.dart';
 
@@ -46,6 +47,7 @@ class ProgrammingQuestionCollection extends StatelessWidget {
             create: (context) => AppBloc()..add(AppEvent.get())),
         BlocProvider<QuestionBloc>(create: (context) => QuestionBloc()),
         BlocProvider(create: (context) => FeedbackCubit()),
+        BlocProvider(create: (context) => CategoryBloc()),
       ],
       child: BlocBuilder<AppBloc, AppState>(
         builder: (context, state) {
