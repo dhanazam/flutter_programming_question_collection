@@ -1,5 +1,4 @@
 // ignore_for_file: invalid_use_of_visible_for_testing_member
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_programming_question_collection/src/data/datasources/local/base/base_cache_service.dart';
 import 'package:flutter_programming_question_collection/src/data/datasources/local/bookmarked_books_source_data.dart';
@@ -24,6 +23,8 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
           break;
         case CategoryEvents.removeBookmarkedQuestion:
           _onRemoveBookmarkedQuestion(event);
+        case CategoryEvents.fetchBookmarkedQuestionsForCategory:
+          _onFetchBookmarkedQuestionsForCategory(event);
           break;
         default:
       }
@@ -31,7 +32,6 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
   }
 
   void _onBookmarkQuestionInitial(CategoryEvent event) async {
-    debugPrint('Bookmarking question');
     var category =
         CacheService().bookmarkedQuestionsCategories.get(event.payload);
 
@@ -48,11 +48,13 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
     final questions = await _bookmarkedQuestionsSourceDataImpl
         .getBookmarkedQuestionsByCategory(event.payload);
 
-    emit(state.copyWith(
-      loading: false,
-      questions: questions,
-      event: CategoryEvents.fetchBookmarkedQuestionsForCategory,
-    ));
+    emit(
+      state.copyWith(
+        loading: false,
+        questions: questions,
+        event: CategoryEvents.fetchBookmarkedQuestionsForCategory,
+      ),
+    );
   }
 
   void _onRemoveBookmarkedQuestion(CategoryEvent event) async {
@@ -73,6 +75,32 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
           loading: false,
           questions: questions,
           event: CategoryEvents.fetchBookmarkedQuestionsForCategory,
+        ),
+      );
+    }
+  }
+
+  void _onFetchBookmarkedQuestionsForCategory(CategoryEvent event) async {
+    emit(state.copyWith(loading: true));
+
+    try {
+      final bookmarkedQuestions = await _bookmarkedQuestionsSourceDataImpl
+          .getBookmarkedQuestionsByCategory(event.payload);
+
+      emit(
+        state.copyWith(
+          loading: false,
+          questions: bookmarkedQuestions,
+          event: CategoryEvents.fetchBookmarkedQuestionsForCategory,
+        ),
+      );
+    } catch (exp) {
+      emit(
+        state.copyWith(
+          questions: [],
+          loading: true,
+          event: CategoryEvents.fetchBookmarkedQuestionsForCategoryError,
+          error: ExceptionModel(description: exp.toString()),
         ),
       );
     }
