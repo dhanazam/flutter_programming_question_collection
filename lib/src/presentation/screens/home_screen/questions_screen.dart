@@ -1,6 +1,9 @@
+import 'package:app_bar_with_search_switch/app_bar_with_search_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_programming_question_collection/src/domain/models/index.dart';
 import 'package:flutter_programming_question_collection/src/presentation/widgets/index.dart';
+import 'package:flutter_programming_question_collection/src/utils/index.dart';
+import 'package:flutter_programming_question_collection/src/utils/view_utils.dart';
 
 class QuestionsScreen extends StatefulWidget {
   const QuestionsScreen({
@@ -21,7 +24,7 @@ class _QuestionsScreenState extends State<QuestionsScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: _appBarWithSearchSwitch(),
       body: ListView.builder(
         itemBuilder: (context, index) {
           return QuestionCard(
@@ -38,6 +41,28 @@ class _QuestionsScreenState extends State<QuestionsScreen>
         addRepaintBoundaries: false,
       ),
       backgroundColor: Colors.white,
+    );
+  }
+
+  AppBarWithSearchSwitch _appBarWithSearchSwitch() {
+    return AppBarWithSearchSwitch(
+      onChanged: (input) {
+        setState(() {});
+        searchedList = widget.questions.where((v) {
+          return v.question.contains(input.toLowerCase());
+        }).toList();
+      },
+      appBarBuilder: (context) => AppBar(
+        centerTitle: false,
+        title: Text(
+          widget.category,
+          style: ViewUtils.ubuntuStyle(fontSize: 19),
+        ),
+        actions: const [AppBarSearchButton()],
+      ),
+      elevation: 0,
+      backgroundColor: AppColors.primary,
+      titleTextStyle: const TextStyle(),
     );
   }
 }
