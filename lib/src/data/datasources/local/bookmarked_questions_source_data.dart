@@ -15,12 +15,11 @@ class BookmarkedQuestionsSourceDataImpl
 
   @override
   Future<List<QuestionCategory>> getQuestionCategoriesFromSource() async {
-    // final datas =
-    //     _cacheService.bookmarkedQuestionsCategories.values.where((category) {
-    //   return category.questions!.isNotEmpty;
-    // });
-    // return datas.toList().cast();
-    return [];
+    final datas =
+        _cacheService.bookmarkedQuestionsCategories.values.where((category) {
+      return category.questions!.isNotEmpty;
+    });
+    return datas.toList().cast();
   }
 
   @override

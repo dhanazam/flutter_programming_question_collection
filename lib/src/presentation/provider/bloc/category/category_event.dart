@@ -36,6 +36,10 @@ class CategoryEvent {
     payload = categoryName;
   }
 
+  CategoryEvent.fetchBookmarkedQuestionsStart() {
+    type = CategoryEvents.fetchBookmarkedQuestionsStart;
+  }
+
   CategoryEvent.removeBookmarkedQuestion(String categoryName, this.question) {
     type = CategoryEvents.removeBookmarkedQuestion;
     payload = categoryName;

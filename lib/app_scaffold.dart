@@ -1,5 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_programming_question_collection/gen/assets.gen.dart';
+import 'package:flutter_programming_question_collection/src/utils/constants/route_names.dart';
+import 'package:flutter_programming_question_collection/src/utils/index.dart';
+import 'package:flutter_programming_question_collection/src/utils/view_utils.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'src/presentation/screens/drawer_screen/index.dart';
 
@@ -33,8 +38,20 @@ class _AppScaffoldState extends State<AppScaffold> {
   AppBar appBar(int screenIndex) {
     return AppBar(
       title: Text(
-        screenIndex.isEqual(0) ? 'Category' : 'Library',
+        screenIndex.isEqual(0) ? 'home.categories'.tr() : 'home.library'.tr(),
+        style: ViewUtils.ubuntuStyle(fontSize: 19),
       ),
+      centerTitle: false,
+      elevation: 0,
+      actions: [
+        screenIndex.isEqual(0)
+            ? IconButton(
+                onPressed: () => context.goNamed(AppRouteConstant.bookmark),
+                icon:
+                    SvgPicture.asset(Assets.svg.bookmark, color: Colors.white),
+              )
+            : const SizedBox.shrink(),
+      ],
     );
   }
 }
@@ -51,14 +68,19 @@ class _BottomNavBar extends StatelessWidget {
       items: _buildItems,
       onTap: changeScreen,
       currentIndex: screenIndex,
+      selectedItemColor: AppColors.primary,
+      backgroundColor: Colors.white,
+      selectedLabelStyle: ViewUtils.ubuntuStyle(fontSize: 15),
+      unselectedLabelStyle: ViewUtils.ubuntuStyle(fontSize: 13),
     );
   }
 
   List<BottomNavigationBarItem> get _buildItems {
     return [
-      const BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
-      const BottomNavigationBarItem(
-          icon: Icon(Icons.library_books), label: 'library')
+      BottomNavigationBarItem(
+          icon: const Icon(Icons.home), label: 'home.home'.tr()),
+      BottomNavigationBarItem(
+          icon: const Icon(Icons.auto_stories), label: 'home.library'.tr()),
     ];
   }
 }

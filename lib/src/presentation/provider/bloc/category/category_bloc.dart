@@ -23,6 +23,9 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
           break;
         case CategoryEvents.removeBookmarkedQuestion:
           _onRemoveBookmarkedQuestion(event);
+        case CategoryEvents.fetchBookmarkedQuestionsStart:
+          _onFetchBookmarkedQuestionsStart(event);
+          break;
         case CategoryEvents.fetchBookmarkedQuestionsForCategory:
           _onFetchBookmarkedQuestionsForCategory(event);
           break;
@@ -98,6 +101,32 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
       emit(
         state.copyWith(
           questions: [],
+          loading: true,
+          event: CategoryEvents.fetchBookmarkedQuestionsForCategoryError,
+          error: ExceptionModel(description: exp.toString()),
+        ),
+      );
+    }
+  }
+
+  void _onFetchBookmarkedQuestionsStart(CategoryEvent event) async {
+    emit(state.copyWith(loading: true));
+
+    try {
+      final questionCategories = await _bookmarkedQuestionsSourceDataImpl
+          .getQuestionCategoriesFromSource();
+
+      emit(
+        state.copyWith(
+          loading: false,
+          questionCategories: questionCategories,
+          event: CategoryEvents.fetchBookmarkedQuestionsSuccess,
+        ),
+      );
+    } catch (exp) {
+      emit(
+        state.copyWith(
+          questionCategories: [],
           loading: true,
           event: CategoryEvents.fetchBookmarkedQuestionsForCategoryError,
           error: ExceptionModel(description: exp.toString()),

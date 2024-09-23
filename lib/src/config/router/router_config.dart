@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_programming_question_collection/src/domain/models/index.dart';
+import 'package:flutter_programming_question_collection/src/presentation/screens/home_screen/bookmark_view.dart';
 import 'package:flutter_programming_question_collection/src/presentation/screens/home_screen/index.dart';
 import 'package:flutter_programming_question_collection/src/presentation/screens/home_screen/question_screen.dart';
 import 'package:flutter_programming_question_collection/src/presentation/screens/library_screen/library_screen.dart';
@@ -87,6 +88,16 @@ class AppRouterConfig {
                       )
                     ],
                   ),
+                  GoRoute(
+                    parentNavigatorKey: _rootNavigatorKey,
+                    path: AppRouteConstant.bookmark,
+                    name: AppRouteConstant.bookmark,
+                    pageBuilder: (BuildContext context, GoRouterState state) {
+                      return MaterialPage(
+                        child: BookmarkView(key: state.pageKey),
+                      );
+                    },
+                  )
                 ],
               )
             ],
