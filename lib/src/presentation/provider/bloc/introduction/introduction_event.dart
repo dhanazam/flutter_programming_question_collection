@@ -1,17 +1,17 @@
 part of 'introduction_bloc.dart';
 
-enum AppEvents { startSet, startGet }
+enum IntroductionEvents { startSet, startGet }
 
-class AppEvent {
-  AppEvents? type;
+class IntroductionEvent {
+  IntroductionEvents? type;
   dynamic payload;
 
-  AppEvent.set(bool value) {
-    type = AppEvents.startSet;
+  IntroductionEvent.set(bool value) {
+    type = IntroductionEvents.startSet;
     payload = value;
   }
 
-  AppEvent.get() {
-    type = AppEvents.startGet;
+  IntroductionEvent.get() {
+    type = IntroductionEvents.startGet;
   }
 }

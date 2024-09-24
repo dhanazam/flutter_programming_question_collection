@@ -6,16 +6,16 @@ import 'package:flutter_programming_question_collection/src/data/datasources/loc
 part 'introduction_event.dart';
 part 'introduction_state.dart';
 
-class AppBloc extends Bloc<AppEvent, AppState> {
-  AppBloc()
+class IntroductionBloc extends Bloc<IntroductionEvent, IntroductionState> {
+  IntroductionBloc()
       : prefsImpl = AppIntroductionPrefsImpl(),
-        super(AppState.unknown()) {
-    on<AppEvent>((event, emit) {
+        super(IntroductionState.unknown()) {
+    on<IntroductionEvent>((event, emit) {
       switch (event.type) {
-        case AppEvents.startSet:
+        case IntroductionEvents.startSet:
           _setState(event);
           break;
-        case AppEvents.startGet:
+        case IntroductionEvents.startGet:
           _getState();
         default:
       }
@@ -29,7 +29,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         state.copyWith(isOnboardingViewed: isOnboardingViewed, loading: false));
   }
 
-  void _setState(AppEvent event) async {
+  void _setState(IntroductionEvent event) async {
     emit(state.copyWith(loading: true));
     await prefsImpl.setIntroducedState(event.payload);
 

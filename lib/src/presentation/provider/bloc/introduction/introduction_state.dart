@@ -1,19 +1,21 @@
 part of 'introduction_bloc.dart';
 
-class AppState {
+enum IntroductionStatus { authenticated, unauthenticated }
+
+class IntroductionState {
   final bool? isOnboardingViewed;
   final bool loading;
 
-  AppState({required this.isOnboardingViewed, required this.loading});
+  IntroductionState({required this.isOnboardingViewed, required this.loading});
 
-  AppState copyWith({bool? isOnboardingViewed, bool? loading}) {
-    return AppState(
+  IntroductionState copyWith({bool? isOnboardingViewed, bool? loading}) {
+    return IntroductionState(
       isOnboardingViewed: isOnboardingViewed ?? this.isOnboardingViewed,
       loading: loading ?? this.loading,
     );
   }
 
-  factory AppState.unknown() {
-    return AppState(isOnboardingViewed: false, loading: false);
+  factory IntroductionState.unknown() {
+    return IntroductionState(isOnboardingViewed: false, loading: false);
   }
 }

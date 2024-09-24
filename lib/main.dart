@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -43,13 +45,14 @@ class ProgrammingQuestionCollection extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<AppBloc>(
-            create: (context) => AppBloc()..add(AppEvent.get())),
+        BlocProvider<IntroductionBloc>(
+            create: (context) =>
+                IntroductionBloc()..add(IntroductionEvent.get())),
         BlocProvider<QuestionBloc>(create: (context) => QuestionBloc()),
         BlocProvider(create: (context) => FeedbackCubit()),
         BlocProvider(create: (context) => CategoryBloc()),
       ],
-      child: BlocBuilder<AppBloc, AppState>(
+      child: BlocBuilder<IntroductionBloc, IntroductionState>(
         builder: (context, state) {
           if (state.loading) return const SizedBox.shrink();
           return MaterialApp.router(

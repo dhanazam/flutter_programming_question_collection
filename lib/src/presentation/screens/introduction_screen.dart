@@ -25,7 +25,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
   }
 
   void checkOnboardingViewed() {
-    final appBloc = context.read<AppBloc>();
+    final appBloc = context.read<IntroductionBloc>();
     if (appBloc.state.isOnboardingViewed!) {
       context.go(AppRouteConstant.homeView);
     }
@@ -33,13 +33,13 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AppBloc, AppState>(
+    return BlocListener<IntroductionBloc, IntroductionState>(
       listener: (context, state) {
         if (state.isOnboardingViewed!) {
           context.go(AppRouteConstant.homeView);
         }
       },
-      child: BlocBuilder<AppBloc, AppState>(
+      child: BlocBuilder<IntroductionBloc, IntroductionState>(
         builder: (context, state) {
           if (state.loading || state.isOnboardingViewed!) {
             return const SplashScreen();
@@ -47,8 +47,9 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
 
           return OnBoardingSlider(
             finishButtonStyle: const FinishButtonStyle(),
-            onFinish: () async =>
-                context.read<AppBloc>().add(AppEvent.set(true)),
+            onFinish: () async => context
+                .read<IntroductionBloc>()
+                .add(IntroductionEvent.set(true)),
             background: introductionIcons(),
             pageBodies: introductionDescriptions,
             headerBackgroundColor: Colors.white,
