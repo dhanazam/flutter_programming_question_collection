@@ -9,10 +9,9 @@ class AuthenticationRepository {
         return User.empty;
       } else {
         return User(
-          id: user.uid,
+          uid: user.uid,
           email: user.email,
-          name: user.displayName,
-          photo: user.photoURL,
+          displayName: user.displayName,
         );
       }
     });

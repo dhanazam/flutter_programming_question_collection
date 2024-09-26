@@ -3,6 +3,11 @@ class AppRouteConstant {
   static const String initial = '/';
   static const String onboarding = '/onboarding';
 
+  static const String loginView = '/login_view';
+  static const String registerView = '/register_view';
+  static const String forgotPasswordView = '/forgot_password_view';
+  static const String resetPasswordView = '/reset_password_view';
+
   static const String homeView = '/home_view';
   static const String bookmark = 'bookmark_view';
   static const String bookmarkedBookView = 'bookmarked_book_view';
