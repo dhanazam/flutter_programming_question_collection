@@ -38,6 +38,8 @@ dependencies:
     path: packages/authentication_repository
   validations:
     path: packages/validations
+  formz: ^0.7.0
+  firebase_auth: ^5.3.0
 
 
 dev_dependencies:

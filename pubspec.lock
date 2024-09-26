@@ -337,7 +337,7 @@ packages:
     source: hosted
     version: "7.0.0"
   firebase_auth:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: firebase_auth
       sha256: "16b0b70e837539b27d4cec059b5169eaf116af9deca896b923e9f84d83af9cc6"
@@ -501,7 +501,7 @@ packages:
     source: sdk
     version: "0.0.0"
   formz:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: formz
       sha256: a58eb48d84685b7ffafac1d143bf47d585bf54c7db89fe81c175dfd6e53201c7
