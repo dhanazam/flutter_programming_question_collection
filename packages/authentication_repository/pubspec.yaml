@@ -8,3 +8,5 @@ environment:
 dependencies:
   firebase_auth: ^5.1.2
   equatable: ^2.0.5
+  google_sign_in: ^6.1.0
+  cloud_firestore: ^5.0.2
