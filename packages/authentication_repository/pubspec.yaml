@@ -10,3 +10,5 @@ dependencies:
   equatable: ^2.0.5
   google_sign_in: ^6.1.0
   cloud_firestore: ^5.0.2
+  shared_pref: 
+    path: ../shared_pref

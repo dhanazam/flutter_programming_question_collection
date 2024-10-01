@@ -388,26 +388,26 @@ packages:
     dependency: "direct main"
     description:
       name: firebase_auth
-      sha256: "16b0b70e837539b27d4cec059b5169eaf116af9deca896b923e9f84d83af9cc6"
+      sha256: d453acec0d958ba0e25d41a9901b32cb77d1535766903dea7a61b2788c304596
       url: "https://pub.dev"
     source: hosted
-    version: "5.3.0"
+    version: "5.3.1"
   firebase_auth_platform_interface:
     dependency: transitive
     description:
       name: firebase_auth_platform_interface
-      sha256: f1f32cdba3f5620082c63d18545dd58dde8f5ffc66caa43feb9b9fe57e93d4b6
+      sha256: "78966c2ef774f5bf2a8381a307222867e9ece3509110500f7a138c115926aa65"
       url: "https://pub.dev"
     source: hosted
-    version: "7.4.6"
+    version: "7.4.7"
   firebase_auth_web:
     dependency: transitive
     description:
       name: firebase_auth_web
-      sha256: "5731d0e51ef7aa93f9c421798b92b6961411c15c18adaff939a3c9f84e8e456b"
+      sha256: "77ad3b252badedd3f08dfa21a4c7fe244be96c6da3a4067f253b13ea5d32424c"
       url: "https://pub.dev"
     source: hosted
-    version: "5.13.1"
+    version: "5.13.2"
   firebase_core:
     dependency: "direct main"
     description:
@@ -465,18 +465,18 @@ packages:
     dependency: transitive
     description:
       name: flutter_gen_core
-      sha256: d8e828ad015a8511624491b78ad8e3f86edb7993528b1613aefbb4ad95947795
+      sha256: "638d518897f1aefc55a24278968027591d50223a6943b6ae9aa576fe1494d99d"
       url: "https://pub.dev"
     source: hosted
-    version: "5.6.0"
+    version: "5.7.0"
   flutter_gen_runner:
     dependency: "direct dev"
     description:
       name: flutter_gen_runner
-      sha256: "931b03f77c164df0a4815aac0efc619a6ac8ec4cada55025119fca4894dada90"
+      sha256: "7f2f02d95e3ec96cf70a1c515700c0dd3ea905af003303a55d6fb081240e6b8a"
       url: "https://pub.dev"
     source: hosted
-    version: "5.6.0"
+    version: "5.7.0"
   flutter_launcher_icons:
     dependency: "direct dev"
     description:
@@ -576,10 +576,10 @@ packages:
     dependency: "direct main"
     description:
       name: go_router
-      sha256: "2ddb88e9ad56ae15ee144ed10e33886777eb5ca2509a914850a5faa7b52ff459"
+      sha256: "5cf5fdcf853b0629deb35891c7af643be900c3dcaed7489009f9e7dbcfe55ab6"
       url: "https://pub.dev"
     source: hosted
-    version: "14.2.7"
+    version: "14.2.8"
   google_fonts:
     dependency: "direct main"
     description:
@@ -824,10 +824,10 @@ packages:
     dependency: transitive
     description:
       name: mime
-      sha256: "2e123074287cc9fd6c09de8336dae606d1ddb88d9ac47358826db698c176a1f2"
+      sha256: "801fd0b26f14a4a58ccb09d5892c3fbdeff209594300a542492cf13fba9d247a"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.5"
+    version: "1.0.6"
   nested:
     dependency: transitive
     description:
@@ -968,10 +968,10 @@ packages:
     dependency: transitive
     description:
       name: permission_handler_platform_interface
-      sha256: fe0ffe274d665be8e34f9c59705441a7d248edebbe5d9e3ec2665f88b79358ea
+      sha256: e9c8eadee926c4532d0305dff94b85bf961f16759c3af791486613152af4b4f9
       url: "https://pub.dev"
     source: hosted
-    version: "4.2.2"
+    version: "4.2.3"
   permission_handler_windows:
     dependency: transitive
     description:
@@ -1060,6 +1060,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.0.0"
+  shared_pref:
+    dependency: transitive
+    description:
+      path: "packages/shared_pref"
+      relative: true
+    source: path
+    version: "1.0.0"
   shared_preferences:
     dependency: "direct main"
     description:
@@ -1301,10 +1308,10 @@ packages:
     dependency: transitive
     description:
       name: uuid
-      sha256: "83d37c7ad7aaf9aa8e275490669535c8080377cfa7a7004c24dfac53afffaa90"
+      sha256: a5be9ef6618a7ac1e964353ef476418026db906c4facdedaa299b7a2e71690ff
       url: "https://pub.dev"
     source: hosted
-    version: "4.4.2"
+    version: "4.5.1"
   validations:
     dependency: "direct main"
     description:
@@ -1372,10 +1379,10 @@ packages:
     dependency: transitive
     description:
       name: web
-      sha256: d43c1d6b787bf0afad444700ae7f4db8827f701bc61c255ac8d328c6f4d52062
+      sha256: cd3543bd5798f6ad290ea73d210f423502e71900302dde696f8bff84bf89a1cb
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0"
+    version: "1.1.0"
   web_socket:
     dependency: transitive
     description:
