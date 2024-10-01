@@ -11,10 +11,7 @@ part 'login_state.dart';
 part 'login_event.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc({
-    required AuthenticationRepository authenticationRepository,
-  })  : _authenticationRepository = authenticationRepository,
-        super(LoginInitial()) {
+  LoginBloc() : super(LoginInitial()) {
     on<LoginEmailChanged>(_onLoginEmailChanged);
     on<LoginPasswordChanged>(_onLoginPasswordChanged);
     on<LoginEmailUnfocused>(_onLoginEmailUnfocused);
@@ -23,7 +20,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<LoginWithGoogle>(_onLoginWithGoogle);
   }
 
-  final AuthenticationRepository _authenticationRepository;
+  final AuthenticationRepository _authenticationRepository =
+      AuthenticationRepository();
 
   void _onLoginEmailChanged(LoginEmailChanged event, Emitter<LoginState> emit) {
     final email = LoginEmailField.dirty(event.email);

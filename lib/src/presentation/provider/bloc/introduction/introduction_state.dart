@@ -1,7 +1,5 @@
 part of 'introduction_bloc.dart';
 
-enum IntroductionStatus { authenticated, unauthenticated }
-
 class IntroductionState {
   final bool? isOnboardingViewed;
   final bool loading;

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_programming_question_collection/src/domain/models/index.dart';
+import 'package:flutter_programming_question_collection/src/presentation/provider/bloc/app/app_bloc.dart';
+import 'package:flutter_programming_question_collection/src/presentation/provider/bloc/introduction/introduction_bloc.dart';
+import 'package:flutter_programming_question_collection/src/presentation/screens/authentication_screen/login_screen.dart';
 import 'package:flutter_programming_question_collection/src/presentation/screens/home_screen/bookmark_view.dart';
 import 'package:flutter_programming_question_collection/src/presentation/screens/home_screen/index.dart';
 import 'package:flutter_programming_question_collection/src/presentation/screens/home_screen/question_screen.dart';
@@ -29,6 +33,15 @@ class AppRouterConfig {
         pageBuilder: (BuildContext context, GoRouterState state) {
           return NoTransitionPage(
               child: IntroductionScreen(key: state.pageKey));
+        },
+      ),
+      GoRoute(
+        path: AppRouteConstant.loginView,
+        name: AppRouteConstant.loginView,
+        pageBuilder: (BuildContext context, GoRouterState state) {
+          return NoTransitionPage(
+            child: LoginScreen(key: state.pageKey),
+          );
         },
       ),
       StatefulShellRoute.indexedStack(
@@ -119,6 +132,24 @@ class AppRouterConfig {
         ],
       )
     ],
+    redirect: (context, state) {
+      final statusAuthentication = context.read<AppBloc>().state.status;
+      final statusOnboarding =
+          context.read<IntroductionBloc>().state.isOnboardingViewed!;
+
+      debugPrint("statusOnboarding $statusOnboarding");
+
+      if (statusOnboarding) {
+        if (statusAuthentication == AppStatus.authenticated) {
+          return AppRouteConstant.homeView;
+        } else {
+          return AppRouteConstant.loginView;
+        }
+      } else {
+        debugPrint("statusOnboarding called");
+        return AppRouteConstant.onboarding;
+      }
+    },
     debugLogDiagnostics: true,
     navigatorKey: _rootNavigatorKey,
     initialLocation: AppRouteConstant.onboarding,

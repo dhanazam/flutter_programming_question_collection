@@ -16,25 +16,28 @@ class IntroductionScreen extends StatefulWidget {
 }
 
 class _IntroductionScreenState extends State<IntroductionScreen> {
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      checkOnboardingViewed();
-    });
-  }
+  // @override
+  // void initState() {
+  //   debugPrint("statusOnboarding isitcall");
+  //   super.initState();
+  //   WidgetsBinding.instance.addPostFrameCallback((_) {
+  //     checkOnboardingViewed();
+  //   });
+  // }
 
-  void checkOnboardingViewed() {
-    final appBloc = context.read<IntroductionBloc>();
-    if (appBloc.state.isOnboardingViewed!) {
-      context.go(AppRouteConstant.homeView);
-    }
-  }
+  // void checkOnboardingViewed() {
+  //   final appBloc = context.read<IntroductionBloc>();
+  //   if (appBloc.state.isOnboardingViewed!) {
+  //     context.go(AppRouteConstant.homeView);
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<IntroductionBloc, IntroductionState>(
       listener: (context, state) {
+        debugPrint(
+            "statusOnboarding intro screen: ${state.isOnboardingViewed!}");
         if (state.isOnboardingViewed!) {
           context.go(AppRouteConstant.homeView);
         }
