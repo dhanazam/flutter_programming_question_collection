@@ -132,23 +132,25 @@ class AppRouterConfig {
         ],
       )
     ],
-    redirect: (context, state) {
+    redirect: (BuildContext context, GoRouterState state) {
       final statusAuthentication = context.read<AppBloc>().state.status;
-      final statusOnboarding =
+      final isOnboardingViewed =
           context.read<IntroductionBloc>().state.isOnboardingViewed!;
 
-      debugPrint("statusOnboarding $statusOnboarding");
+      final currentLocation = state.fullPath;
 
-      if (statusOnboarding) {
-        if (statusAuthentication == AppStatus.authenticated) {
+      if (isOnboardingViewed) {
+        if (currentLocation == AppRouteConstant.onboarding &&
+            statusAuthentication == AppStatus.authenticated) {
           return AppRouteConstant.homeView;
-        } else {
+        } else if (statusAuthentication == AppStatus.unauthenticated) {
           return AppRouteConstant.loginView;
         }
       } else {
-        debugPrint("statusOnboarding called");
         return AppRouteConstant.onboarding;
       }
+
+      return null;
     },
     debugLogDiagnostics: true,
     navigatorKey: _rootNavigatorKey,
