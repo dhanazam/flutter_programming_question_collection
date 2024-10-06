@@ -79,7 +79,13 @@ class _DrawerViewState extends State<DrawerView> {
                 ),
               );
             },
-          )
+          ),
+          _ListTile(
+            icon: Icons.logout,
+            color: Colors.red,
+            title: 'drawer.logout'.tr(),
+            onTap: () => ViewUtils.showLogoutDialog(context),
+          ),
         ],
       ),
     );

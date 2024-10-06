@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_programming_question_collection/gen/assets.gen.dart';
+import 'package:flutter_programming_question_collection/src/presentation/provider/bloc/app/app_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rating_dialog/rating_dialog.dart';
 import 'package:store_redirect/store_redirect.dart';
@@ -94,6 +96,33 @@ class ViewUtils {
       "https://play.google.com/store/apps/details?id=com.interview.helper.app&hl=en",
       subject: '',
       sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size,
+    );
+  }
+
+  static void showLogoutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('drawer.logout'.tr()),
+          content: Text('drawer.areYouSure'.tr()),
+          actions: <Widget>[
+            TextButton(
+              child: Text('cancel'.tr()),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text('logout'.tr()),
+              onPressed: () {
+                context.read<AppBloc>().add(const AppLogoutRequested());
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
