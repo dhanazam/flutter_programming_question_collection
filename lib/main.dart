@@ -79,7 +79,7 @@ class ProgrammingQuestionCollection extends StatelessWidget {
             title: "Programming Question Collection",
             restorationScopeId: 'interview_helper',
             debugShowCheckedModeBanner: false,
-            routerConfig: AppRouterConfig.init.config,
+            routerConfig: goRouter(BlocProvider.of<AppBloc>(context)),
             scaffoldMessengerKey: ViewUtils.scaffoldMessengerKey,
             locale: !state.isOnboardingViewed!
                 ? View.of(context).platformDispatcher.locale

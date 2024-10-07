@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_programming_question_collection/src/domain/models/index.dart';
@@ -19,13 +21,9 @@ final GlobalKey<NavigatorState> _homeNavigatorKey = GlobalKey<NavigatorState>();
 final GlobalKey<NavigatorState> _libraryNavigatorKey =
     GlobalKey<NavigatorState>();
 
-class AppRouterConfig {
-  AppRouterConfig._();
-
-  static final AppRouterConfig _init = AppRouterConfig._();
-  static AppRouterConfig get init => _init;
-
-  final GoRouter config = GoRouter(
+GoRouter goRouter(AppBloc appBloc) {
+  return GoRouter(
+    refreshListenable: GoRouterRefreshStream(appBloc.stream),
     routes: <RouteBase>[
       GoRoute(
         path: AppRouteConstant.onboarding,
@@ -138,6 +136,7 @@ class AppRouterConfig {
           context.read<IntroductionBloc>().state.isOnboardingViewed!;
 
       final currentLocation = state.fullPath;
+      debugPrint("statusAuthentication = $statusAuthentication");
 
       if (isOnboardingViewed) {
         if (currentLocation == AppRouteConstant.onboarding &&
@@ -156,4 +155,21 @@ class AppRouterConfig {
     navigatorKey: _rootNavigatorKey,
     initialLocation: AppRouteConstant.onboarding,
   );
+}
+
+class GoRouterRefreshStream extends ChangeNotifier {
+  GoRouterRefreshStream(Stream<dynamic> stream) {
+    notifyListeners();
+    _subscription = stream.asBroadcastStream().listen(
+          (dynamic _) => notifyListeners(),
+        );
+  }
+
+  late final StreamSubscription<dynamic> _subscription;
+
+  @override
+  void dispose() {
+    _subscription.cancel();
+    super.dispose();
+  }
 }

@@ -117,7 +117,6 @@ class ViewUtils {
               child: Text('logout'.tr()),
               onPressed: () {
                 context.read<AppBloc>().add(const AppLogoutRequested());
-                Navigator.of(context).pop();
               },
             ),
           ],
