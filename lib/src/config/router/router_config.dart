@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_programming_question_collection/src/domain/models/index.dart';
 import 'package:flutter_programming_question_collection/src/presentation/provider/bloc/app/app_bloc.dart';
 import 'package:flutter_programming_question_collection/src/presentation/provider/bloc/introduction/introduction_bloc.dart';
-import 'package:flutter_programming_question_collection/src/presentation/screens/authentication_screen/login_screen.dart';
+import 'package:flutter_programming_question_collection/src/presentation/screens/authentication_screen/index.dart';
 import 'package:flutter_programming_question_collection/src/presentation/screens/home_screen/bookmark_view.dart';
 import 'package:flutter_programming_question_collection/src/presentation/screens/home_screen/index.dart';
 import 'package:flutter_programming_question_collection/src/presentation/screens/home_screen/question_screen.dart';
@@ -39,6 +39,15 @@ GoRouter goRouter(AppBloc appBloc) {
         pageBuilder: (BuildContext context, GoRouterState state) {
           return NoTransitionPage(
             child: LoginScreen(key: state.pageKey),
+          );
+        },
+      ),
+      GoRoute(
+        path: AppRouteConstant.registerView,
+        name: AppRouteConstant.registerView,
+        pageBuilder: (BuildContext context, GoRouterState state) {
+          return NoTransitionPage(
+            child: RegisterScreen(key: state.pageKey),
           );
         },
       ),
@@ -136,13 +145,13 @@ GoRouter goRouter(AppBloc appBloc) {
           context.read<IntroductionBloc>().state.isOnboardingViewed!;
 
       final currentLocation = state.fullPath;
-      debugPrint("statusAuthentication = $statusAuthentication");
 
       if (isOnboardingViewed) {
         if (currentLocation == AppRouteConstant.onboarding &&
             statusAuthentication == AppStatus.authenticated) {
           return AppRouteConstant.homeView;
-        } else if (statusAuthentication == AppStatus.unauthenticated) {
+        } else if (currentLocation == AppRouteConstant.onboarding &&
+            statusAuthentication == AppStatus.unauthenticated) {
           return AppRouteConstant.loginView;
         }
       } else {
