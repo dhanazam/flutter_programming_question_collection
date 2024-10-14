@@ -1,0 +1,15 @@
+name: google_books_api
+description: A library that provides access to the Google Books API.
+version: 1.0.0
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  http: ^1.2.2
+  json_annotation: ^4.4.0
+  equatable: ^2.0.3
+
+dev_dependencies:
+  json_serializable: ^6.1.4
+  build_runner: ^2.1.11

@@ -1,7 +1,6 @@
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:flutter/material.dart';
 import 'package:shared_pref/shared_pref.dart';
 
 class AuthenticationRepository {
@@ -13,7 +12,6 @@ class AuthenticationRepository {
   Stream<User> retrieveCurrentUser() {
     return _auth.authStateChanges().map(
       (firebase_auth.User? user) {
-        debugPrint("user: $user");
         if (user == null) {
           return User.empty;
         } else {
