@@ -4,7 +4,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_pref/shared_pref.dart';
 
 class AuthenticationRepository {
-  firebase_auth.FirebaseAuth _auth = firebase_auth.FirebaseAuth.instance;
+  final firebase_auth.FirebaseAuth _auth = firebase_auth.FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn.standard();
   final SharedPreferencesManager _sharedPreferencesManager =
       SharedPreferencesManager();

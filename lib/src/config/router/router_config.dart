@@ -9,7 +9,7 @@ import 'package:flutter_programming_question_collection/src/presentation/screens
 import 'package:flutter_programming_question_collection/src/presentation/screens/home_screen/bookmark_view.dart';
 import 'package:flutter_programming_question_collection/src/presentation/screens/home_screen/index.dart';
 import 'package:flutter_programming_question_collection/src/presentation/screens/home_screen/question_screen.dart';
-import 'package:flutter_programming_question_collection/src/presentation/screens/library_screen/library_screen.dart';
+import 'package:flutter_programming_question_collection/src/presentation/screens/book_screen/book_screen.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../app_scaffold.dart';
@@ -130,7 +130,7 @@ GoRouter goRouter(AppBloc appBloc) {
                 name: AppRouteConstant.libraryView,
                 pageBuilder: (BuildContext context, GoRouterState state) {
                   return NoTransitionPage(
-                    child: LibraryScreen(key: state.pageKey),
+                    child: BookScreen(key: state.pageKey),
                   );
                 },
               )

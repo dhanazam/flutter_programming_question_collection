@@ -168,8 +168,8 @@ class _FeedbackButtonState extends State<_FeedbackButton> {
       child: OutlinedButton(
         onPressed: () => _sendFeedback(),
         style: ButtonStyle(
-          overlayColor: MaterialStateProperty.all(Colors.white),
-          foregroundColor: MaterialStateProperty.all(Colors.black),
+          overlayColor: WidgetStateProperty.all(Colors.white),
+          foregroundColor: WidgetStateProperty.all(Colors.black),
           // side: MaterialStateProperty.all(const BorderSide(color: AppColors.primary, strokeAlign: 10)),
         ),
         child: BlocConsumer<FeedbackCubit, FeedbackState>(

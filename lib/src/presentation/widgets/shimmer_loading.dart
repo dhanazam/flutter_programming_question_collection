@@ -7,6 +7,7 @@ class KShimmer extends StatelessWidget {
 
   final String? progress;
 
+  @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
       baseColor: Colors.grey,

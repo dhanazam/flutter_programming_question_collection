@@ -44,6 +44,8 @@ dependencies:
   firebase_app_check: ^0.3.1+3
   cached_network_image: ^3.4.1
   shimmer: ^3.0.0
+  google_books_api:
+    path: packages/google_books_api
 
 
 dev_dependencies:

@@ -187,7 +187,7 @@ class _LoginFormViewState extends State<LoginFormView> {
                                     .bodyMedium
                                     ?.fontSize),
                           ),
-                          label: Text('Login'),
+                          label: const Text('Login'),
                           icon: state.status.isInProgress
                               ? Container(
                                   width: 24,

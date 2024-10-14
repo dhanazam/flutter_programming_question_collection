@@ -29,7 +29,7 @@ class Book extends Equatable {
       id: id ?? this.id,
       etag: etag ?? this.etag,
       selfLink: selfLink ?? this.selfLink,
-      volumeInfo: info ?? this.volumeInfo,
+      volumeInfo: info ?? volumeInfo,
     );
   }
 
