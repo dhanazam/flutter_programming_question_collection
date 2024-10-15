@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:google_books_api/src/models/index.dart';
 
 import 'package:json_annotation/json_annotation.dart';
 
@@ -19,7 +20,6 @@ class BookInfo extends Equatable {
     this.language = '',
     this.maturityRating = '',
     this.pageCount = 0,
-    required this.publishedDate,
     this.rawPublishedDate = '',
     this.ratingsCount = 0,
     required this.previewLink,
@@ -31,7 +31,6 @@ class BookInfo extends Equatable {
   final String subtitle;
   final List<String> authors;
   final String publisher;
-  final DateTime? publishedDate;
   final String rawPublishedDate;
   final String description;
   final int pageCount;
@@ -40,7 +39,7 @@ class BookInfo extends Equatable {
   final int ratingsCount;
   final String maturityRating;
   final String contentVersion;
-  final Map<String, Uri>? imageLinks;
+  final ImageLinks imageLinks;
   final String language;
   final Uri previewLink;
   final Uri infoLink;
@@ -60,7 +59,7 @@ class BookInfo extends Equatable {
     int? ratingsCount,
     String? maturityRating,
     String? contentVersion,
-    Map<String, Uri>? imageLinks,
+    ImageLinks? imageLinks,
     String? language,
     Uri? previewLink,
     Uri? infoLink,
@@ -71,7 +70,6 @@ class BookInfo extends Equatable {
       subtitle: subtitle ?? this.subtitle,
       authors: authors ?? this.authors,
       publisher: publisher ?? this.publisher,
-      publishedDate: publishedDate ?? this.publishedDate,
       rawPublishedDate: rawPublishedDate ?? this.rawPublishedDate,
       description: description ?? this.description,
       pageCount: pageCount ?? this.pageCount,
@@ -99,7 +97,6 @@ class BookInfo extends Equatable {
         subtitle,
         authors,
         publisher,
-        publishedDate,
         rawPublishedDate,
         description,
         pageCount,

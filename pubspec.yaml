@@ -46,6 +46,8 @@ dependencies:
   shimmer: ^3.0.0
   google_books_api:
     path: packages/google_books_api
+  bloc_concurrency: ^0.2.0
+  stream_transform: ^2.0.0
 
 
 dev_dependencies:

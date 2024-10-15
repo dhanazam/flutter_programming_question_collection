@@ -8,10 +8,12 @@ class BookListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return Material(
       child: ListTile(
-        leading: Text(book.id, style: textTheme.bodySmall),
+        leading: book.volumeInfo.imageLinks.smallThumbnail != null
+            ? Image.network(book.volumeInfo.imageLinks.smallThumbnail!,
+                width: 50, height: 200, fit: BoxFit.cover)
+            : const Icon(Icons.book), // or a default image
         title: Text(book.volumeInfo.title),
         isThreeLine: true,
         subtitle: Text(book.volumeInfo.subtitle),
